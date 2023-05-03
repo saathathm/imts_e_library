@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+
+}
+
+/* .m-btn {
+    background: #000000;
+    color: #fff;
+    padding: 5px 7px 6px;
+    border: 0;
+    border-radius: 5px;
+} */
+
+.m-btn{
+	display: inline-block;
+	padding: 5px 7px 6px;
+	background: #320f2b;
+    border: 0;
+    font-weight: bold;
+	border-radius: 5px;
+	color: #ffffff;
+	transition: background .5s;
+}
+
+.m-btn:hover{
+	background: #75085f;
+	color: #fff;
+	
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+.m-main {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.m-left {
+    width: 60%;
+    height: 100vh;
+}
+
+.hold-transition {
+    background-color: #a85a9b;
+    height: 100vh;
+}
+
+.m-l-card{
+    height: 100px; background:#320f2b; color:aliceblue;transition: transform .5s;
+}
+
+.m-l-card:hover{
+    background: #75085f;
+    transform: translateY(-1px);
+}
+
+.m-l-card2{
+    align-items:center; justify-content:center; flex-direction:column;
+}
+
+.m-right {
+    position: relative;
+    width: 40%;
+    background-image: url('img/tofan.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.m-right-title {
+    position: absolute;
+    top: 2%;
+    left: 9%;
+    color: pink;
+    font-size: 85px;
+    line-height: 100px;
+}
