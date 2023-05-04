@@ -29,7 +29,7 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Categor Name</label>
+                            <label for="exampleInputEmail1">Category Name</label>
                             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter name"
                                 name="cat_name">
                         </div>
