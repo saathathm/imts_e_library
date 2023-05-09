@@ -12,9 +12,6 @@ class AdminCategoriesController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $categories = category::latest()->get();
         return view('admins.category.index', ['categories' => $categories]);
     }
@@ -24,10 +21,6 @@ class AdminCategoriesController extends Controller
      */
     public function create()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
-
         return view('admins.category.create');
     }
 
@@ -65,9 +58,6 @@ class AdminCategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $categories = Category::find($id);
         return view('admins.category.edit', ['categories' => $categories]);
     }

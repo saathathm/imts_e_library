@@ -42,13 +42,7 @@ class UserCommentsController extends Controller
         $comments->comment = request('comment');
         $comments->save();
 
-        // $allComments = Comment::join('users', 'users.id', '=', 'comments.user_id')->where('book_id', $id)->get([
-        //     'users.name', 'comments.comment', 'comments.updated_at'
-        // ]);
-
-        // return view('users.comment.show', ['books' => $books, 'allComments' => $allComments]);
-        return redirect('/user/comments/'.$id);
-
+        return redirect('/user/comments/' . $id);
     }
 
     /**
@@ -56,16 +50,12 @@ class UserCommentsController extends Controller
      */
     public function show(string $id)
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
         $books = Book::find($id);
 
-        $allComments = Comment::join('users', 'users.id', '=', 'comments.user_id')->where('book_id', $id)->orderBy('updated_at','desc')->get([
+        $allComments = Comment::join('users', 'users.id', '=', 'comments.user_id')->where('book_id', $id)->orderBy('updated_at', 'desc')->get([
             'users.name', 'users.id as userid', 'comments.comment', 'comments.id', 'comments.updated_at'
         ]);
         return view('users.comment.show', ['books' => $books, 'allComments' => $allComments]);
-
     }
 
     /**

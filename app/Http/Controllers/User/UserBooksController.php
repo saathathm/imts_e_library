@@ -13,9 +13,6 @@ class UserBooksController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
         $allBooks = Book::join('authors', 'authors.id', '=', 'books.author_id')->join('categories', 'categories.id', '=', 'books.category_id')
             ->get(['books.id', 'books.isbn', 'books.title', 'books.file', 'authors.author_name', 'categories.cat_name']);
 
@@ -27,9 +24,6 @@ class UserBooksController extends Controller
      */
     public function create()
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
         return view('users.book.create');
     }
 

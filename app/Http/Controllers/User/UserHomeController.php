@@ -14,14 +14,9 @@ class UserHomeController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
-
         $totalcategories = count(Category::where('status', 1)->get());
         $totalbooks = count(Book::all());
         return view('users.home.home', ['totalcategories' => $totalcategories, 'totalbooks' => $totalbooks]);
-
     }
 
     /**

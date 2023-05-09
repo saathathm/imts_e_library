@@ -12,9 +12,6 @@ class AdminAuthorsController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $authors = Author::latest()->get();
         return view('admins.author.index', ['authors' => $authors]);
     }
@@ -24,10 +21,6 @@ class AdminAuthorsController extends Controller
      */
     public function create()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
-
         return view('admins.author.create');
     }
 
@@ -64,9 +57,6 @@ class AdminAuthorsController extends Controller
      */
     public function edit(string $id)
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $authors = Author::find($id);
         return view('admins.author.edit', ['authors' => $authors]);
     }

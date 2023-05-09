@@ -12,9 +12,6 @@ class AdminCommentsController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $comments = Comment::join('books', 'books.id', '=', 'comments.book_id')->join('users', 'users.id', '=', 'comments.user_id')->get([
             'books.title', 'users.name', 'comments.comment', 'comments.updated_at', 'comments.id'
         ]);

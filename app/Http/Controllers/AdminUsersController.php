@@ -13,10 +13,6 @@ class AdminUsersController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
-
         $users = User::latest()->get();
         return view('admins.user.user', ['users' => $users]);
     }

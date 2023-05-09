@@ -14,9 +14,6 @@ class UserCategoriesController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
         $categories = Category::where('status', '1')->get();
         return view('users.category.index', ['categories' => $categories]);
     }
@@ -42,9 +39,6 @@ class UserCategoriesController extends Controller
      */
     public function show(string $id)
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
         $categories = category::all();
         $catname = category::find($id);
         $catlist = Book::join('categories', 'categories.id', '=', 'books.category_id')

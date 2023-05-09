@@ -14,9 +14,6 @@ class AdminBookController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $books = Book::join('categories', 'categories.id', '=', 'books.category_id')
             ->join('authors', 'authors.id', '=', 'books.author_id')->get([
                 'books.id', 'books.title',
@@ -31,10 +28,6 @@ class AdminBookController extends Controller
      */
     public function create()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
-
         $authors = Author::all();
         $categories = Category::where('status', 1)->get();
         return view('admins.book.create', ['authors' => $authors, 'categories' => $categories]);
@@ -70,9 +63,6 @@ class AdminBookController extends Controller
      */
     public function show(string $id)
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
     }
 
     /**
@@ -80,9 +70,6 @@ class AdminBookController extends Controller
      */
     public function edit(string $id)
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $books = Book::find($id);
         $authors = Author::all();
         $categories = category::where('status', 1)->get();

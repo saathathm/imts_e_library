@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class TestLogin
+class UserAuth
 {
     /**
      * Handle an incoming request.
@@ -15,11 +15,10 @@ class TestLogin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session()->has('user_id')) {
-            return $next($request);
-        }else{
+        if (!(session()->has('user_id'))) {
             return redirect('/user/login');
+        } else {
+            return $next($request);
         }
-
     }
 }

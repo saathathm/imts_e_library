@@ -13,9 +13,6 @@ class UserRequestsController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('user_id'))) {
-            return redirect('/user/login');
-        }
         return view('users.request.index');
     }
 

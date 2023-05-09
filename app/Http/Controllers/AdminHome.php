@@ -15,10 +15,6 @@ class AdminHome extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
-
         $totalusers = count(User::all());
         $totalbooks = count(Book::all());
         $totalcomments = count(Comment::all());

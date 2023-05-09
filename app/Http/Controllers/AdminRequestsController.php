@@ -12,9 +12,6 @@ class AdminRequestsController extends Controller
      */
     public function index()
     {
-        if (!(session()->has('admin_id'))) {
-            return redirect('/admin/login');
-        }
         $request = ModelsRequest::join('users', 'users.id', '=', 'requests.user_id')->get([
             'users.name', 'requests.user_id', 'requests.message', 'requests.updated_at', 'requests.id'
         ]);

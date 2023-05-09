@@ -33,25 +33,25 @@ Route::view('/', 'index');
 
 // --- grouping same common url ---
 Route::prefix('admin')->group(function () {
-
+    Route::get('/', [AdminHome::class, 'index'])->middleware('admin.auth');
     Route::resource('register', AdminRegisterController::class);
     Route::resource('login', AdminLoginController::class);
-    Route::resource('home', AdminHome::class);
-    Route::resource('users', AdminUsersController::class);
-    Route::resource('categories', AdminCategoriesController::class);
-    Route::resource('authors', AdminAuthorsController::class);
-    Route::resource('books', AdminBookController::class);
-    Route::resource('requests', AdminRequestsController::class);
-    Route::resource('comments', AdminCommentsController::class);
+    Route::resource('home', AdminHome::class)->middleware('admin.auth');
+    Route::resource('users', AdminUsersController::class)->middleware('admin.auth');
+    Route::resource('categories', AdminCategoriesController::class)->middleware('admin.auth');
+    Route::resource('authors', AdminAuthorsController::class)->middleware('admin.auth');
+    Route::resource('books', AdminBookController::class)->middleware('admin.auth');
+    Route::resource('requests', AdminRequestsController::class)->middleware('admin.auth');
+    Route::resource('comments', AdminCommentsController::class)->middleware('admin.auth');
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('/', [UserHomeController::class,'index'])->middleware('auth');
-    Route::get('home', [UserHomeController::class,'index']);
+    Route::get('/', [UserHomeController::class, 'index'])->middleware('user.auth');
+    Route::resource('home', UserHomeController::class)->middleware('user.auth');
     Route::resource('register', UserRegisterController::class);
     Route::resource('login', UserLoginController::class);
-    Route::resource('categories', UserCategoriesController::class);
-    Route::resource('comments', UserCommentsController::class);
-    Route::resource('requests', UserRequestsController::class);
-    Route::resource('books', UserBooksController::class);
+    Route::resource('categories', UserCategoriesController::class)->middleware('user.auth');
+    Route::resource('comments', UserCommentsController::class)->middleware('user.auth');
+    Route::resource('requests', UserRequestsController::class)->middleware('user.auth');
+    Route::resource('books', UserBooksController::class)->middleware('user.auth');
 });
