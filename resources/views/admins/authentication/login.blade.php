@@ -61,7 +61,7 @@
 
                             <div class="row d-flex" style="justify-content: space-between; transform:translateY(20px)">
                                 <!-- /.col -->
-                                <a href="/admin/register" class="ml-2 mt-1">Create a new account</a>
+                                {{-- <a href="/admin/register" class="ml-2 mt-1">Create a new account</a> --}}
 
                                 <div class="col-4">
                                     <button type="submit" class="btn btn-primary btn-block">Sign in</button>
